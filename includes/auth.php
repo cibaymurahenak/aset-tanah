@@ -1,0 +1,20 @@
+<?php
+/** Helper autentikasi sesi untuk halaman backend. */
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+function require_login(): void {
+    if (empty($_SESSION['user_id'])) {
+        header('Location: login.php');
+        exit;
+    }
+}
+
+function is_logged_in(): bool {
+    return !empty($_SESSION['user_id']);
+}
+
+function e(?string $s): string {
+    return htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8');
+}

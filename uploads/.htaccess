@@ -1,0 +1,5 @@
+# Izinkan akses gambar tapi cegah eksekusi script di folder upload
+<FilesMatch "\.(php|phtml|php\d)$">
+    Require all denied
+</FilesMatch>
+Options -Indexes
